@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://192.168.190.141:3306/mall_pms?serverTimezone=GMT%2B8&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.190.141:8848
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  thymeleaf:
+    cache: false
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+server:
+  port: 10001
+logging:
+  level:
+    com.learn.mall: info
+    com.alibaba.nacos.client.naming: WARN
+    com.alibaba.nacos.client.config.impl: WARN
+# application.yml
+seata:
+  enabled: true
+  application-id: mall-product
+  tx-service-group: my_test_tx_group
+  service:
+    vgroup-mapping:
+      my_test_tx-group: default
+    grouplist:
+      default: 192.168.190.141:8091  # Seata Server 地址

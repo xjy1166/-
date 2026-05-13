@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>购物车添加成功页</title>
+    <script type="text/javascript" src="static/cart/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="static/cart/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="static/cart/js/swiper.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/cart/css/swiper.min.css"/>
+    <link rel="stylesheet" type="text/css" href="static/cart/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="static/cart/css/success.css"/>
+    <link rel="icon" href="static/cart/img/ljl1.ico" type="/image/x-icon"/>
+    <link rel="stylesheet" href="static/cart/css/One_bdyStyle.css">
+    <link rel="stylesheet" href="static/cart/css/index.css">
+    <script src="static/cart/js/jquery-3.1.1.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="static/cart/css/One_mainFoot.css">
+    <link rel="stylesheet" href="static/cart/css/font-awesome-4.7.0/css/font-awesome.css"/>
+    <link rel="stylesheet" href="/static/index/css/footer.css">
+
+</head>
+
+<body>
+<!--头部-->
+<header>
+    <a name="mao1">
+        <div class="header">
+            <ul class="header-left">
+                <li style="height: 100%">
+                    <a href="http://mall.com">首页</a>
+                </li>
+            </ul>
+            <ul class="header-right">
+                <li style="height: 100%"><a th:if="${session.loginUser!=null}" style="width: 100px">欢迎：[[${session.loginUser.nickname}]]</a>
+                </li>
+                <li style="height: 100%"><a th:if="${session.loginUser==null}" href="http://auth.mall.com/auth/login.html"
+                       style="color: red;">你好，请登录</a></li>
+                <li style="height: 100%"><a th:if="${session.loginUser==null} " href="http://auth.mall.com/auth/reg.html">免费注册</a></li>
+                <li class="spacer"></li>
+                <li style="height: 100%"><a href="">我的订单</a></li>
+                <li class="spacer"></li>
+            </ul>
+            <div style="clear: both;"></div>
+        </div>
+    </a>
+</header>
+
+<div class="main" style="height: 250px">
+    <div class="success-wrap" style="height: 250px">
+        <div class="w" id="result" style="width: 100%;height: 250px">
+            <div class="m succeed-box" style="width: 100%;height: 250px">
+                <div th:if="${item!=null}" class="mc success-cont" style="width: 100%;height: 250px">
+                    <div class="success-lcol" style="width: 700px;height: 250px">
+                        <div class="success-top"><b class="succ-icon"></b>
+                            <h3 class="ftx-02">商品已成功加入购物车</h3></div>
+                        <div class="p-item" style="width: 750px;height: 100px">
+                            <div class="p-img">
+                                <a th:href="'http://item.mall.com/'+${item.skuId}+'.html'" target="_blank">
+                                    <img style="height: 80px;width:80px;"
+                                th:src="${item.image}"></a>
+                            </div>
+                            <div class="p-info" style="width: 900px">
+                                <div class="p-name" style="width: 900px">
+                                    <a style="width: 100%" th:href="'http://item.mall.com/'+${item.skuId}+'.html'"
+                                       th:text="${item.title}">TCL</a>
+                                </div>
+                                <div class="p-extra" style="width: 900px">
+                                    <span style="width: 900px" th:text="${item.skuAttr}">
+                                    </span>
+                                </div>
+                                <br>
+                                <div class="p-extra"><span class="txt" th:text="'数量：'+${item.count}">  数量：1</span>
+                                </div>
+                            </div>
+                            <div class="clr"></div>
+                        </div>
+                    </div>
+                    <div class="success-btns success-btns-new">
+                        <div class="success-ad">
+                            <a href="/#none"></a>
+                        </div>
+                        <div class="clr"></div>
+                        <div class="bg_shop">
+                            <a class="btn-tobback"
+                               th:href="'http://item.mall.com/'+${item.skuId}+'.html'">查看商品详情</a>
+                            <a class="btn-addtocart" href="http://cart.mall.com/cart.html"
+                               id="GotoShoppingCart"><b></b>去购物车结算</a>
+                        </div>
+                    </div>
+                </div>
+                <div th:if="${item==null}" class="mc success-cont" style="left: 750px;top: 110px">
+                    <h2>
+                        <a style="font-size: large" href="http://mall.com">购物车中没有商品，去逛逛~</a>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <div class="bg_top">
+        <ol class="slogen">
+            <li class="item fore1">
+                <i>多</i>品类齐全，轻松购物
+            </li>
+            <li class="item fore2">
+                <i>快</i>多仓直发，极速配送
+            </li>
+            <li class="item fore3">
+                <i>好</i>正品行货，精致服务
+            </li>
+            <li class="item fore4">
+                <i>省</i>天天低价，畅选无忧
+            </li>
+        </ol>
+    </div>
+    <div class="dj_help">
+        <div class="dj_w">
+            <div class="dj_wrap">
+                <dl class="fore1">
+                    <dt>购物指南</dt>
+                    <dd>
+                        <a href="javascript:;">购物流程</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">会员介绍</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">生活旅行/团购</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">常见问题</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">大家电</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">联系客服</a>
+                    </dd>
+                </dl>
+                <dl class="fore2">
+                    <dt>配送方式</dt>
+                    <dd>
+                        <a href="javascript:;">上门自提</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">限时达</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">配送服务查询</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">配送费收取标准</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">海外配送</a>
+                    </dd>
+                </dl>
+                <dl class="fore3">
+                    <dt>支付方式</dt>
+                    <dd>
+                        <a href="javascript:;">货到付款</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">在线支付</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">分期付款</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">邮局汇款</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">公司转账</a>
+                    </dd>
+                </dl>
+                <dl class="fore4">
+                    <dt>售后服务</dt>
+                    <dd>
+                        <a href="javascript:;">售后政策</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">价格保护</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">退款说明</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">返修/退换货</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">取消订单</a>
+                    </dd>
+                </dl>
+                <dl class="fore5">
+                    <dt>特色服务</dt>
+                    <dd>
+                        <a href="javascript:;">夺宝岛</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">DIY装机</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">延保服务</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">商城E卡</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">商城通信</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;">商城mall+</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+</footer>
+<div class="bg_info_footer">
+    <div class="bg_wrap">
+        <div class="bg_links">
+            <p>
+                <a href="javascript:;" target="_blank">关于我们</a><span class="copyright_split">|</span>
+                <a href="javascript:;" target="_blank">联系我们</a><span class="copyright_split">|</span>
+                <a href="javascript:;" target="_blank">联系客服</a><span class="copyright_split">|</span>
+                <a href="javascript:;" target="_blank">合作招商</a><span class="copyright_split">|</span>
+                <a href="javascript:;" target="_blank">商家帮助</a><span class="copyright_split">|</span>
+                <a href="javascript:;" target="_blank">营销中心</a><span class="copyright_split">|</span>
+                <a href="javascript:;" target="_blank">手机商城</a><span class="copyright_split">|</span>
+                <a href="javascript:;" target="_blank">友情链接</a><span class="copyright_split">|</span>
+                <a href="javascript:;" target="_blank">销售联盟</a><span class="copyright_split">|</span>
+                <a href="javascript:;" target="_blank">商城社区</a><span class="copyright_split">|</span>
+                <a href="javascript:;" target="_blank">风险监测</a><span class="copyright_split">|</span>
+                <a href="javascript:;" target="_blank">隐私政策</a><span class="copyright_split">|</span>
+                <a href="javascript:;" target="_blank">商城公益</a><span class="copyright_split">|</span>
+            </p>
+        </div>
+        <div class="bg_info_sky">
+            <p class="bg_info_dy">
+                <a class="copyright_auth_ico copyright_auth_ico_1" href="javascript:;" target="_blank">经营性网站备案中心</a>
+                <a id="urlknet" class="copyright_auth_ico copyright_auth_ico_2" href="javascript:;" target="_blank">可信网站信用评估</a>
+                <a class="copyright_auth_ico copyright_auth_ico_3" href="javascript:;" target="_blank">网络警察提醒你</a>
+                <a class="copyright_auth_ico copyright_auth_ico_4" href="javascript:;" target="_blank">诚信网站</a>
+                <a class="copyright_auth_ico copyright_auth_ico_5" href="javascrit:;" target="_blank">中国互联网举报中心</a>
+                <a class="copyright_auth_ico copyright_auth_ico_6" href="javascript:;" target="_blank">网络举报APP下载</a>
+            </p>
+        </div>
+
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="static/cart/js/success.js"></script>
+
+</html>
